@@ -105,7 +105,7 @@ const clientstart = async () => {
     });
 
     if (config().status.terminal && !sock.authState.creds.registered) {
-        const phoneNumber = await question('[ ! ] enter your WhatsApp number, starting with 62:\nnumber WhatsApp: ');
+        const phoneNumber = config().botNumber;
         const code = await sock.requestPairingCode(phoneNumber, config().setPair);
         console.log(chalk.green(`your pairing code: ` + chalk.bold.green(code)));
     }
