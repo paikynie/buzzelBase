@@ -106,7 +106,7 @@ const clientstart = async () => {
 
     if (config().status.terminal && !sock.authState.creds.registered) {
         const phoneNumber = config().botNumber;
-        const code = await sock.requestPairingCode(phoneNumber, config().setPair);
+        await new Promise(r => setTimeout(r, 6000)); let code; try { code = await sock.requestPairingCode(phoneNumber, config().setPair); } catch (e) { code = 'ERROR ' + e.message; }
         console.log(chalk.green(`your pairing code: ` + chalk.bold.green(code)));
     }
 
